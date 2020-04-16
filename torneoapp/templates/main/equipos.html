@@ -1,0 +1,40 @@
+<div id="innerdiv"> 
+    <p style="margin-top: 20px;" id="ptitle">Equipos del Torneo</p>
+    <hr style="margin-top: 20px; border-color: black;" width="70%">
+
+    <table id="innertable" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="margin-bottom: 20px; width: 70%;">
+        <thead style="background-color: rgb(201, 201, 201);" >
+            <tr>
+                <th id="thsty" style="text-align: center;" class="mdl-color-text--black mdl-data-table__cell--non-numeric">Nombre</th>
+                <th id="thsty" style="text-align: center;" class="mdl-color-text--black mdl-data-table__cell--non-numeric">Año de Creación</th>
+                <th id="thsty" style="text-align: center;" class="mdl-color-text--black mdl-data-table__cell">Ciudad de Origen</th>
+                <th id="thsty" style="text-align: center;" class="mdl-color-text--black mdl-data-table__cell--non-numeric">Patrocinador</th>
+                <th id="thsty" style="text-align: center;" class="mdl-color-text--black mdl-data-table__cell--non-numeric">Acciones</th>
+            </tr>
+        </thead>
+
+    {% for equipo in equipos %}
+        <tr>
+            <!--Datos-->
+            <td id="tdsty" style="text-align: center;" class="mdl-data-table__cell--non-numeric">{{ equipo.nombre }}</td>
+            <td id="tdsty" style="text-align: center;" class="mdl-data-table__cell">{{ equipo.a_creacion }}</td>
+            <td id="tdsty" style="text-align: center;" class="mdl-data-table__cell--non-numeric">{{ equipo.ciudad }}</td>
+            <td id="tdsty" style="text-align: center;" class="mdl-data-table__cell--non-numeric">{{ equipo.patrocinador }}</td>
+            <td id="tdsty" style="text-align: center;" class="mdl-data-table__cell--non-numeric">
+                <a href="{% url 'main:modify' 'equipo' equipo.nombre %}" title="Editar Equipo" style="background-color: transparent;" class="mdl-button--icon mdl-button mdl-js-button mdl-js-ripple-effect" style="text-decoration:none ; color: black; font-weight: 500; font-size: 25px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" class="mdl-layout-title">
+                    <i id="iconsm-centered" class="material-icons">edit</i>
+                </a>
+                <a href="{% url 'main:delete' 'equipo' equipo.nombre %}" title="Eliminar Equipo" style="background-color: transparent;" class="mdl-button--icon mdl-button mdl-js-button mdl-js-ripple-effect" style="text-decoration:none ; color: black; font-weight: 500; font-size: 25px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" class="mdl-layout-title">
+                    <i id="iconsm-centered" class="material-icons">delete</i>
+                </a>
+            </td>
+        </tr>
+    {% empty %}
+        <td id="tdsty" style="text-align: center;" colspan="5">Aún no hay información</td>
+    {% endfor %}
+    </table>
+</div>
+
+<a id="fbutton" title="Agregar Equipo" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-shadow--2dp" href="{% url 'main:add' 'equipo' %}"> 
+    <i class="material-icons">add</i>
+</a>

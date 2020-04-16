@@ -1,0 +1,63 @@
+<div id="innerdiv"> 
+    <p style="margin-top: 20px;" id="ptitle">Otras Transacciones</p>
+    <hr style="margin-top: 20px; border-color: black;" width="70%">
+
+    <table id="innertable" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width: 70%;">
+        <thead style="background-color: rgb(201, 201, 201);" >
+            <tr>
+                <th id="thsty" style="text-align: center;" class="mdl-color-text--black mdl-data-table__cell--non-numeric">#</th>
+                <th id="thsty" style="text-align: center;" class="mdl-color-text--black mdl-data-table__cell--non-numeric">Modelo</th>
+                <th id="thsty" style="text-align: center;" class="mdl-color-text--black mdl-data-table__cell--non-numeric">Acciones</th>
+            </tr>
+        </thead>
+
+        <tr>
+            <td id="tdsty" style="text-align: center;" class="mdl-data-table__cell--non-numeric">1</td>
+            <td id="tdsty" style="text-align: center;" class="mdl-data-table__cell--non-numeric">Ciudades</td>
+            <td id="tdsty" style="text-align: center;" class="mdl-data-table__cell--non-numeric">
+                <a href="{% url 'main:listar' 'ciudad' %}" title="Listar Ciudades" style="background-color: transparent;" class="mdl-button--icon mdl-button mdl-js-button mdl-js-ripple-effect" style="text-decoration:none ; color: black; font-weight: 500; font-size: 25px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" class="mdl-layout-title">
+                    <i id="iconsm-centered" class="material-icons">list</i>
+                </a>
+                <a href="{% url 'main:add' 'ciudad' %}" title="Agregar Ciudad" style="background-color: transparent;" class="mdl-button--icon mdl-button mdl-js-button mdl-js-ripple-effect" style="text-decoration:none ; color: black; font-weight: 500; font-size: 25px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" class="mdl-layout-title">
+                    <i id="iconsm-centered" class="material-icons">add</i>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td id="tdsty" style="text-align: center;" class="mdl-data-table__cell--non-numeric">2</td>
+            <td id="tdsty" style="text-align: center;" class="mdl-data-table__cell--non-numeric">Empresas</td>
+            <td id="tdsty" style="text-align: center;" class="mdl-data-table__cell--non-numeric">
+                <a href="{% url 'main:listar' 'empresa' %}" title="Listar Empresas" style="background-color: transparent;" class="mdl-button--icon mdl-button mdl-js-button mdl-js-ripple-effect" style="text-decoration:none ; color: black; font-weight: 500; font-size: 25px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" class="mdl-layout-title">
+                    <i id="iconsm-centered" class="material-icons">list</i>
+                </a>
+                <a href="{% url 'main:add' 'empresa' %}" title="Agregar Empresa" style="background-color: transparent;" class="mdl-button--icon mdl-button mdl-js-button mdl-js-ripple-effect" style="text-decoration:none ; color: black; font-weight: 500; font-size: 25px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" class="mdl-layout-title">
+                    <i id="iconsm-centered" class="material-icons">add</i>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td id="tdsty" style="text-align: center;" class="mdl-data-table__cell--non-numeric">3</td>
+            <td id="tdsty" style="text-align: center;" class="mdl-data-table__cell--non-numeric">Personas Naturales</td>
+            <td id="tdsty" style="text-align: center;" class="mdl-data-table__cell--non-numeric">
+                <a href="{% url 'main:listar' 'personanatural' %}" title="Listar Personas Naturales" style="background-color: transparent;" class="mdl-button--icon mdl-button mdl-js-button mdl-js-ripple-effect" style="text-decoration:none ; color: black; font-weight: 500; font-size: 25px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" class="mdl-layout-title">
+                    <i id="iconsm-centered" class="material-icons">list</i>
+                </a>
+                <a href="{% url 'main:add' 'personanatural' %}" title="Agregar Persona Natural" style="background-color: transparent;" class="mdl-button--icon mdl-button mdl-js-button mdl-js-ripple-effect" style="text-decoration:none ; color: black; font-weight: 500; font-size: 25px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" class="mdl-layout-title">
+                    <i id="iconsm-centered" class="material-icons">add</i>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td id="tdsty" style="text-align: center;" class="mdl-data-table__cell--non-numeric">4</td>
+            <td id="tdsty" style="text-align: center;" class="mdl-data-table__cell--non-numeric">Transferencias de Jugadores</td>
+            <td id="tdsty" style="text-align: center;" class="mdl-data-table__cell--non-numeric">
+                <a href="{% url 'main:listar' 'transferencia' %}" title="Listar Jugadores por Equipo" style="background-color: transparent;" class="mdl-button--icon mdl-button mdl-js-button mdl-js-ripple-effect" style="text-decoration:none ; color: black; font-weight: 500; font-size: 25px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" class="mdl-layout-title">
+                    <i id="iconsm-centered" class="material-icons">list</i>
+                </a>
+                <a href="{% url 'main:add' 'transferencia' %}" title="Crear Transferencia" style="background-color: transparent;" class="mdl-button--icon mdl-button mdl-js-button mdl-js-ripple-effect" style="text-decoration:none ; color: black; font-weight: 500; font-size: 25px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" class="mdl-layout-title">
+                    <i id="iconsm-centered" class="material-icons">add</i>
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>

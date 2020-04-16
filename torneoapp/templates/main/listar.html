@@ -1,0 +1,55 @@
+{% extends 'style.html' %}
+{% block body %}
+<head>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header"> 
+            <div class="mdl-layout__header-row">
+                <table style="height:100%; width: 100%;">
+                    <tr style="height: 100%;">
+                        <td>
+                            <a href="{% url 'main:home' %}" style="text-decoration:none ; color: black; font-weight: 500; font-size: 25px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" class="mdl-layout-title">
+                                Torneo de Fútbol
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </header>
+    </div>
+    <title>Lista de {{ model_name }}</title>
+</head>
+<body>
+    <div id="divbo" style="padding-top: 60px;">
+    <div id="innerdiv"> 
+        <p style="margin-top: 20px;" id="ptitle">Lista de {{ model_name }} {% if idmol != null and model in 'transferencia2' %} de {{ name }} {% endif %} </p>
+        <hr style="margin-top: 20px; border-color: black;" width="70%">
+        {% if model in 'ciudad' %}
+            {% include 'main/ciudades.html' %}
+        {% elif model in 'empresa' %}
+            {% include 'main/empresas.html' %}
+        {% elif model in 'personanatural' %}
+            {% include 'main/personanatural.html' %}
+        {% elif model in 'transferencia' or model in 'transferencia2' %}
+            {% include 'main/transferencias.html' %}
+        {% elif model in 'jugadorxpartido' %}
+            {% include 'main/jugadorxpartido.html' %}
+        {% endif%}
+    </div>
+
+    {% if model in 'jugadorxpartido' %}
+        <a id="fbutton" title="Agregar {{model_name}}" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-shadow--2dp" href="{% url 'main:addid' model idmol %}"> 
+            <i class="material-icons">add</i>
+        </a>
+    {% elif model == 'transferencia2' %}
+        <a id="fbutton" title="Agregar {{model_name}}" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-shadow--2dp" href="{% url 'main:addid' model idmol %}"> 
+            <i class="material-icons">add</i>
+        </a>
+    {% else %}
+        <a id="fbutton" title="Agregar {{model_name}}" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-shadow--2dp" href="{% url 'main:add' model %}"> 
+            <i class="material-icons">add</i>
+        </a>
+    {% endif%}
+    
+</div>
+</body>
+{% endblock body %}

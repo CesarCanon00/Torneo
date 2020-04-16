@@ -1,0 +1,98 @@
+{% extends 'style.html' %}
+{% block body %}
+<html>
+    <head>
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <header class="mdl-layout__header"> 
+                <div class="mdl-layout__header-row">
+                    <table style="height:100%; width: 100%;">
+                        <tr style="height: 100%;">
+                            <td>
+                                <a href="login" style="text-decoration:none ; color: black; font-weight: 500; font-size: 25px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" class="mdl-layout-title">
+                                    Torneo de Fútbol
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </header>
+            <title>Registrar Usuario</title>
+        </div>
+
+        <style>            
+            input{
+                border-top-style: hidden;
+                border-right-style: hidden;
+                border-left-style: hidden;
+                border-bottom-style: hidden;
+                text-align: center;
+                outline: none;
+                background-color: transparent;
+                width: 100%;
+            }
+            #centerDiv{
+                text-align: center;
+            }
+            .demo-card-event > .mdl-card__actions {
+            border-color: rgba(255, 255, 255, 0.2);
+            }
+            #divbo{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(255, 240, 158);
+            height: 100%;
+            }
+            #ph{
+            align-self: center;
+            padding-top: 40px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 25px;
+            font-weight: 500;
+            }
+            #nbutton{
+            background-color: rgb(75, 132, 255);
+            color: white;
+            margin-left: 30%;
+            margin-right: 30%;
+            margin-top: 0;
+            margin-bottom: 10px;
+            width: 40%
+        }
+        </style>
+    </head>
+    <body>
+    <div id="divbo">
+        <div id="centerDiv">
+            <div class="demo-card-event mdl-card mdl-shadow--2dp" style="align-self: center;">
+                <div style="align-items: center; width: 100%; height: 50px;" class="mdl-card__title ">
+                    <p style="width: 100%; text-align: center;" id="ph">Registrar Usuario</h4>
+                </div>
+                <div class="mdl-card__title mdl-card--expand" style="height: 10%;">
+                    <form style="margin-bottom: 0; margin-top: 10px;" method="POST" action="">    
+                        {% csrf_token %}
+                        {% for field in form %}
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <div class="mdl-textfield__input mdl-js-textfield mdl-textfield--floating-label" >
+                            {{ field }}
+                            </div>
+                            <label style="text-align: center; font-weight: bold;" class="mdl-textfield__label" > {{ field.label }}</label>
+                        </div>
+                            {% if field.errors %}
+                                <br>
+                                <span>{{ field.errors|striptags }}</span>  
+                            {% endif %}
+                        {% endfor %}
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <button id="nbutton" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-shadow--2dp" type="submit" name="Create User">Registrar</button>
+                    
+                </div>
+            </div>
+            </form>
+        </div>
+        {% endblock body %}
+    </div>
+
+    </body>
+</html>

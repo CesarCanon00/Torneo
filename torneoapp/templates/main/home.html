@@ -1,0 +1,91 @@
+{% extends 'style.html' %}
+{% block body %}
+<html>
+    <head>
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <header class="mdl-layout__header"> 
+                <div class="mdl-layout__header-row">
+                    <table style="height:100%; width: 100%;">
+                        <tr style="height: 100%;">
+                            <td>
+                                <a href="{% url 'main:home' %}" style="text-decoration:none ; color: black; font-weight: 500; font-size: 25px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" class="mdl-layout-title">
+                                    Torneo de Fútbol: <i>El Oso de Oro Chino</i>
+                                </a>
+                            </td>
+                            <td style="text-align: right; padding-right: 10px;">
+                                <a href="{% url 'main:logout' %}" style="background-color: transparent;" class="mdl-button--icon mdl-button mdl-js-button mdl-js-ripple-effect" style="text-decoration:none ; color: black; font-weight: 500; font-size: 25px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" class="mdl-layout-title">
+                                    <i class="material-icons">logout</i>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+                    <a id="atabs" href="#pa" class="mdl-layout__tab is-active">Partidos</a>
+                    <a id="atabs" href="#eq" class="mdl-layout__tab">Equipos</a>
+                    <a id="atabs" href="#ju" class="mdl-layout__tab">Jugadores</a>
+                    <a id="atabs" href="#ar" class="mdl-layout__tab">Árbitros</a>
+                    <a id="atabs" href="#es" class="mdl-layout__tab">Estadios</a>
+                    <a id="atabs" href="#pt" class="mdl-layout__tab">Patrocinadores</a>
+                    <a id="atabs" href="#ot" class="mdl-layout__tab">Otros</a>
+                </div>
+            </header>
+            <main class="mdl-layout__content">
+                <section class="mdl-layout__tab-panel is-active" id="pa">
+                    <div class="page-content">
+                        <!-- START -->
+                        {% include 'main/partidos.html' %}
+                        <!-- END -->
+                    </div>
+                </section>
+                <section class="mdl-layout__tab-panel" id="eq">
+                    <div class="page-content">
+                        <!-- START -->
+                        {% include 'main/equipos.html' %}
+                        <!-- END -->
+                    </div>
+                </section>
+                <section class="mdl-layout__tab-panel" id="ju">
+                    <div class="page-content">
+                        <!-- START -->
+                        {% include 'main/jugadores.html' %}
+                        <!-- END -->
+                    </div>
+                </section>
+                <section class="mdl-layout__tab-panel" id="ar">
+                    <div class="page-content">
+                        <!-- START -->
+                        {% include 'main/arbitros.html' %}
+                        <!-- END -->
+                    </div>
+                </section>
+                <section class="mdl-layout__tab-panel" id="es">
+                    <div class="page-content">
+                        <!-- START -->
+                        {% include 'main/estadios.html' %}
+                        <!-- END -->
+                    </div>
+                </section>
+                <section class="mdl-layout__tab-panel" id="pt">
+                    <div class="page-content">
+                        <!-- START -->
+                        {% include 'main/patrocinadores.html' %}
+                        <!-- END -->
+                    </div>
+                </section>
+                <section class="mdl-layout__tab-panel" id="ot">
+                    <div class="page-content">
+                        <!-- START -->
+                        {% include 'main/otras.html' %}
+                        <!-- END -->
+                    </div>
+                </section>
+            </main>
+            <title>Página principal</title>
+        </div>
+    </head>
+    <body>
+        
+    </body>
+</html>
+{% endblock body %}

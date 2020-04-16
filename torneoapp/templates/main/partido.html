@@ -1,0 +1,204 @@
+{% extends 'style.html' %}
+{% load tz %}
+{% block body %}
+<html>
+    <head>
+
+        <style>
+            #divbo{
+            display: flex;
+            justify-content: center;
+            background-color: rgb(255, 240, 158);
+            padding-top: 120px;
+            margin-bottom: 60px;
+            }
+        </style>
+
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <header class="mdl-layout__header"> 
+                <div class="mdl-layout__header-row">
+                    <table style="height:100%; width: 100%;">
+                        <tr style="height: 100%;">
+                            <td>
+                                <a href="{% url 'main:home' %}" style="text-decoration:none ; color: black; font-weight: 500; font-size: 25px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" class="mdl-layout-title">
+                                    Torneo de Fútbol: Partido {{ eq_local }} vs. {{ eq_visit }}
+                                </a>
+                            </td>
+                            <td style="text-align: right; padding-right: 10px;">
+                                <a href="{% url 'main:logout' %}" style="background-color: transparent;" class="mdl-button--icon mdl-button mdl-js-button mdl-js-ripple-effect" style="text-decoration:none ; color: black; font-weight: 500; font-size: 25px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" class="mdl-layout-title">
+                                    <i class="material-icons">logout</i>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </header>
+            <title>{{ eq_local }} vs. {{ eq_visit }} </title>
+        </div>
+    </head>
+
+    <body>
+        <div style="padding-top: 80px;" id="centerdiv">
+            <p style="margin-top: 20px;" id="ptitle">Partido</p>
+            <p style="margin-top: 20px;" id="ptitle">{{ eq_local }} vs. {{ eq_visit }}</p>
+            <hr style="margin: auto; margin-top: 20px; border-color: black;" width="70%">
+
+            <p style="margin-top: 30px;" id="ptitle">Ficha Técnica</p>
+            <div id="divtab">
+                <table id="parttable" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="align-self: center;"> 
+                    <tr><td style="text-align: center; font-size: 20px;"><b>Fecha</b><br>{{ fecha |timezone:"America/Bogota"|date:'F j, Y - P'}}</td></tr>
+                </table>
+            </div>
+            <div id="divtab">
+                <table id="parttable" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="align-self: center;"> 
+                    <tr><td style="text-align: center; font-size: 20px;"><b>Árbitro</b><br>{{ arbitro }}</td></tr>
+                </table>
+            </div>
+            <div style="padding-top: 10px;" id="divtab">
+                <table id="parttable" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="align-self: center;"> 
+                    <tr><td style="text-align: center; font-size: 20px;"><b>Marcador
+                    <tr><td style="text-align: center; font-size: 20px;">
+                        {{eq_local }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{pts_local}} - {{pts_visit}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{eq_visit}}
+                    </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="padding-top: 10px;" id="divtab">
+                <table id="parttable" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="align-self: center;"> 
+                    <tr><td style="text-align: center; font-size: 20px; background-color: rgb(75, 132, 255); color: white;"><b>{% if ganador != 'Empate' %}Ganador{% else %} Resultado {% endif %}</b>
+                    <tr><td style="text-align: center; font-size: 20px; background-color: rgb(134, 173, 255);"><b>{{ ganador }}</b></td>
+                    </tr>
+                </table>
+            </div>
+
+            <hr style="margin: auto; margin-top: 40px; border-color: black;" width="70%">
+            <p style="margin-top: 30px;" id="ptitle">Jugadores</p>
+
+            <div>
+                <div style="padding-top: 10px;" id="divtab">
+                    <table style="align-self: center; width: 50%;">
+                        <thead>
+                            <tr>
+                                <th style="font-size: 20px; width: 40%;">{{eq_local}}</th>
+                                <th style="text-align: center; width: 20%;"></th>
+                                <th style="font-size: 20px; width: 40%;">{{eq_visit}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div style="display: flex; justify-content: center;">
+                                    <table id="intable" style="align-self: center; width: 100%; margin-top: 20px;" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp"> 
+                                            {% for jugador in j_local %}
+                                            <tr><td style="text-align: center;">{{ jugador }}</td></tr>
+                                            {% empty %}
+                                            <tr><td style="text-align: center;">No hay jugadores de este equipo<br>registrados para este partido</td></tr>
+                                            {% endfor %}
+                                    </table>
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div style="display: flex; justify-content: center;">
+                                        <table id="intable" style="align-self: center; width: 100%; margin-top: 20px;" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp"> 
+                                            {% for jugador in j_visit %}
+                                            <tr><td style="text-align: center;">{{ jugador }}</td></tr>
+                                            {% empty %}
+                                            <tr><td style="text-align: center;">No hay jugadores de este equipo<br>registrados para este partido</td></tr>
+                                            {% endfor %}
+                                        </table>
+                                    </div>
+                                </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td style="text-align: center; padding-top: 20px;">
+                                    <a id="fbuttons" title="Agregar Jugador al Partido" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-shadow--2dp" href="{% url 'main:addid' 'jugadorxpartido' fecha %}"> 
+                                        <i class="material-icons">add</i>
+                                    </a>
+                                    <a style="margin-left: 10px; margin-right: 10px;" href="">
+                                    </a>
+                                    <a id="fbuttons" title="Lista de jugadores del Partido" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-shadow--2dp" href="{% url 'main:listarid' 'jugadorxpartido' fecha %}"> 
+                                        <i class="material-icons">list</i>
+                                    </a>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <hr style="margin: auto; margin-top: 40px; border-color: black;" width="70%">
+                <p style="margin-top: 30px;" id="ptitle">Eventos</p>
+                
+                <div style="display: flex; justify-content: center;">
+                    <div id="divtab"  style="width: 70%;">
+                        <table style="width: 100%;"> 
+                            <tr>
+                                <td>
+                                    <table style="width: 100%;" id="intable" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="align-self: center; width: 100%;"> 
+                                        <thead style="background-color: rgb(201, 201, 201);">
+                                            <tr>
+                                                <th id="thsty" style="text-align: center;" class="mdl-color-text--black mdl-data-table__cell--non-numeric">Minuto</th>
+                                                <th id="thsty" style="text-align: center;" class="mdl-color-text--black mdl-data-table__cell--non-numeric">Evento</th>
+                                                <th id="thsty" style="text-align: center;" class="mdl-color-text--black mdl-data-table__cell--non-numeric">Ejecutor</th>
+                                                <th id="thsty" style="text-align: center;" class="mdl-color-text--black mdl-data-table__cell--non-numeric">Descripción</th>
+                                                <th id="thsty" style="text-align: center;" class="mdl-color-text--black mdl-data-table__cell--non-numeric">Acciones</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        {% for evento in eventos %}
+                                            <tr>
+                                                <td id="tdsty" style="text-align: center;" class="mdl-data-table__cell--non-numeric">
+                                                    {{ evento.tiempo }}
+                                                </td>
+                                                <td id="tdsty" style="text-align: center;" class="mdl-data-table__cell--non-numeric">
+                                                    {{ evento.tipo_evento }}
+                                                </td>
+                                                <td id="tdsty" style="text-align: center;" class="mdl-data-table__cell--non-numeric">
+                                                    {{ evento.jugadorxpartido.jugador }}
+                                                </td>
+                                                <td id="tdsty" style="text-align: center;" class="mdl-data-table__cell--non-numeric">
+                                                    {% if evento.descripcion != None %}{{ evento.descripcion }}{% else %} - {% endif %}
+                                                </td>
+                                                <td id="tdsty" style="text-align: center;" class="mdl-data-table__cell--non-numeric">
+                                                    <a href="{% url 'main:modify' 'evento' evento.codigo %}" title="Editar Registro" style="background-color: transparent;" class="mdl-button--icon mdl-button mdl-js-button mdl-js-ripple-effect" style="text-decoration:none ; color: black; font-weight: 500; font-size: 25px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" class="mdl-layout-title">
+                                                        <i id="iconsm-centered" class="material-icons">edit</i>
+                                                    </a>
+                                                    <a href="{% url 'main:deleteid' 'evento' evento.codigo fecha %}" title="Eliminar Registro" style="background-color: transparent;" class="mdl-button--icon mdl-button mdl-js-button mdl-js-ripple-effect" style="text-decoration:none ; color: black; font-weight: 500; font-size: 25px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" class="mdl-layout-title">
+                                                        <i id="iconsm-centered" class="material-icons">delete</i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        {% empty %}
+                                            <tr>
+                                                <td id="tdsty" style="text-align: center;" class="mdl-data-table__cell--non-numeric" colspan="5">
+                                                    No hay eventos registrados para este partido.
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; padding-bottom: 20px;">
+                                <a id="fbuttons" title="Agregar Evento al Partido" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-shadow--2dp" href="{% url 'main:addid' 'evento' fecha %}"> 
+                                    <i class="material-icons">add</i>
+                                </a>
+                                </td>
+                            </tr>
+                        </table>    
+                    </div>
+                </div>
+            
+                
+        </div>
+
+            
+    </body>
+</html>
+{% endblock body %}
